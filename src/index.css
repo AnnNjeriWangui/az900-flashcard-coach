@@ -1,3 +1,80 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  /* 3D Card Flip Transforms */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .perspective-1200 {
+    perspective: 1200px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  /* Physical Index Card Ruled Paper Background */
+  .index-card-paper {
+    background-color: #fefdfa;
+    background-image:
+      /* Pink/red margin line on the left (at 52px) */
+      linear-gradient(to right, transparent 52px, rgba(244, 63, 94, 0.35) 52px, rgba(244, 63, 94, 0.35) 54px, transparent 54px),
+      /* Repeating light blue ruled lines every 30px */
+      repeating-linear-gradient(
+        transparent,
+        transparent 29px,
+        rgba(147, 197, 253, 0.45) 29px,
+        rgba(147, 197, 253, 0.45) 30px
+      );
+  }
+
+  /* Dark mode or subtle paper grain */
+  .paper-shadow {
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.05),
+      0 10px 25px -5px rgba(16, 42, 67, 0.12),
+      0 20px 40px -15px rgba(16, 42, 67, 0.15);
+  }
+
+  /* Physical punch hole effect */
+  .ring-punch-hole {
+    box-shadow:
+      inset 0 3px 6px rgba(0, 0, 0, 0.45),
+      inset 0 1px 2px rgba(0, 0, 0, 0.6),
+      0 1px 1px rgba(255, 255, 255, 0.9);
+  }
+
+  /* Authentic chisel highlighter marker streaks */
+  .highlighter-compute {
+    background: linear-gradient(104deg, rgba(224, 242, 254, 0.95) 0%, rgba(186, 230, 253, 0.88) 100%);
+    box-shadow: 0 1px 3px rgba(56, 189, 248, 0.15);
+  }
+  .highlighter-storage {
+    background: linear-gradient(104deg, rgba(254, 249, 195, 0.95) 0%, rgba(254, 240, 138, 0.88) 100%);
+    box-shadow: 0 1px 3px rgba(234, 179, 8, 0.15);
+  }
+  .highlighter-networking {
+    background: linear-gradient(104deg, rgba(209, 250, 229, 0.95) 0%, rgba(167, 243, 208, 0.88) 100%);
+    box-shadow: 0 1px 3px rgba(16, 185, 129, 0.15);
+  }
+  .highlighter-identity {
+    background: linear-gradient(104deg, rgba(243, 232, 255, 0.95) 0%, rgba(233, 213, 255, 0.88) 100%);
+    box-shadow: 0 1px 3px rgba(168, 85, 247, 0.15);
+  }
+  .highlighter-security {
+    background: linear-gradient(104deg, rgba(255, 228, 230, 0.95) 0%, rgba(254, 205, 211, 0.88) 100%);
+    box-shadow: 0 1px 3px rgba(244, 63, 94, 0.15);
+  }
+  .highlighter-governance {
+    background: linear-gradient(104deg, rgba(255, 237, 213, 0.95) 0%, rgba(254, 215, 170, 0.88) 100%);
+    box-shadow: 0 1px 3px rgba(249, 115, 22, 0.15);
+  }
+}
