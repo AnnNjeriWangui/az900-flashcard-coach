@@ -1,4 +1,4 @@
-import { Cloud, Server, ShieldCheck, ArrowRight, Info } from 'lucide-react';
+import { Cloud, Server, ShieldCheck, ArrowRight, Info, Layers } from 'lucide-react';
 import { categories, flashcards } from '@/data/flashcards';
 import type { CategoryId } from '@/data/flashcards';
 import type { ProgressStats } from '@/hooks/useProgress';
@@ -35,10 +35,17 @@ export default function Dashboard({ stats, onNavigate, onStudyCategory }: Dashbo
         </p>
         <div className="flex flex-wrap gap-3">
           <button
-            onClick={() => onNavigate('study')}
+            onClick={() => onNavigate('flashcards')}
             className="bg-white text-navy-800 font-semibold px-6 py-3 rounded-xl hover:bg-sky-50 transition-all duration-200 shadow-lg flex items-center gap-2"
           >
-            Start Studying <ArrowRight className="w-4 h-4" />
+            <Layers className="w-4 h-4 text-sky-600" />
+            Study Index Cards (3D) <ArrowRight className="w-4 h-4" />
+          </button>
+          <button
+            onClick={() => onNavigate('study')}
+            className="bg-white/10 text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/20 transition-all duration-200 border border-white/20"
+          >
+            Study List
           </button>
           <button
             onClick={() => onNavigate('revision')}

@@ -4,6 +4,7 @@ import Dashboard from '@/components/Dashboard';
 import StudyMode from '@/components/StudyMode';
 import RevisionMode from '@/components/RevisionMode';
 import ProgressView from '@/components/ProgressView';
+import FlashcardDeck from '@/components/Flashcard';
 import { flashcards } from '@/data/flashcards';
 import type { CategoryId } from '@/data/flashcards';
 import { useProgress } from '@/hooks/useProgress';
@@ -24,6 +25,12 @@ function App() {
       <main className="max-w-6xl mx-auto px-4 py-8">
         {view === 'dashboard' && (
           <Dashboard stats={stats} onNavigate={setView} onStudyCategory={navigateToStudy} />
+        )}
+        {view === 'flashcards' && (
+          <FlashcardDeck
+            externalStatusMap={progress}
+            onSetStatus={setStatus}
+          />
         )}
         {view === 'study' && (
           <StudyMode

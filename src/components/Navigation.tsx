@@ -1,6 +1,6 @@
-import { Cloud, BookOpen, RotateCcw, BarChart3, LayoutDashboard } from 'lucide-react';
+import { Cloud, BookOpen, RotateCcw, BarChart3, LayoutDashboard, Layers } from 'lucide-react';
 
-export type View = 'dashboard' | 'study' | 'revision' | 'progress';
+export type View = 'dashboard' | 'flashcards' | 'study' | 'revision' | 'progress';
 
 interface NavProps {
   view: View;
@@ -9,7 +9,8 @@ interface NavProps {
 
 const items: { id: View; label: string; icon: typeof Cloud }[] = [
   { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { id: 'study', label: 'Study Cards', icon: BookOpen },
+  { id: 'flashcards', label: 'Index Cards', icon: Layers },
+  { id: 'study', label: 'Study List', icon: BookOpen },
   { id: 'revision', label: 'Revision', icon: RotateCcw },
   { id: 'progress', label: 'Progress', icon: BarChart3 },
 ];
