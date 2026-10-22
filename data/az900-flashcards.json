@@ -1,0 +1,172 @@
+{
+  "metadata": {
+    "course": "AZ-900: Microsoft Azure Fundamentals",
+    "version": "1.0.0",
+    "total_cards": 18,
+    "updated_at": "2026-10-22"
+  },
+  "cards": [
+    {
+      "id": "az900-001",
+      "domain": "Azure Architecture and Services",
+      "subtopic": "Networking Services",
+      "question": "What is an Azure Virtual Network (VNet)?",
+      "answer": "A VNet is a fundamental private network in Azure that enables Azure resources to securely communicate with each other, the internet, and on-premises networks.",
+      "difficulty": "easy",
+      "tags": ["vnet", "networking", "infrastructure"]
+    },
+    {
+      "id": "az900-002",
+      "domain": "Azure Architecture and Services",
+      "subtopic": "Networking Services",
+      "question": "What is the primary difference between Azure Load Balancer and Azure Application Gateway?",
+      "answer": "Azure Load Balancer operates at Layer 4 (Transport Layer) for TCP/UDP traffic, while Azure Application Gateway operates at Layer 7 (Application Layer) supporting SSL termination, WAF, and URL-based routing.",
+      "difficulty": "medium",
+      "tags": ["load-balancer", "application-gateway", "layer4", "layer7"]
+    },
+    {
+      "id": "az900-003",
+      "domain": "Azure Architecture and Services",
+      "subtopic": "Networking Services",
+      "question": "What is Azure ExpressRoute and how does it connect to Azure?",
+      "answer": "ExpressRoute provides a dedicated, private, and high-speed connection between on-premises infrastructure and Azure that does NOT go over the public internet.",
+      "difficulty": "medium",
+      "tags": ["expressroute", "hybrid", "networking"]
+    },
+    {
+      "id": "az900-004",
+      "domain": "Azure Architecture and Services",
+      "subtopic": "Database Services",
+      "question": "What core features define Azure Cosmos DB?",
+      "answer": "Cosmos DB is a fully managed, globally distributed, multi-model NoSQL database service offering single-digit millisecond latency, automatic scaling, and multi-region replication.",
+      "difficulty": "medium",
+      "tags": ["cosmos-db", "nosql", "global-distribution"]
+    },
+    {
+      "id": "az900-005",
+      "domain": "Azure Architecture and Services",
+      "subtopic": "Database Services",
+      "question": "When should you use Azure Synapse Analytics over standard Azure SQL Database?",
+      "answer": "Use Azure Synapse Analytics for enterprise data warehousing, big data processing, and large-scale analytics across massive datasets, whereas Azure SQL Database is optimized for OLTP applications.",
+      "difficulty": "hard",
+      "tags": ["synapse", "sql", "data-warehouse", "big-data"]
+    },
+    {
+      "id": "az900-006",
+      "domain": "Azure Architecture and Services",
+      "subtopic": "Compute Services",
+      "question": "What is the key difference between Azure App Service and Azure Container Instances (ACI)?",
+      "answer": "Azure App Service is a fully managed PaaS for hosting web apps and APIs, while ACI provides serverless container execution without managing underlying virtual machines or orchestration frameworks.",
+      "difficulty": "medium",
+      "tags": ["app-service", "aci", "containers", "compute"]
+    },
+    {
+      "id": "az900-007",
+      "domain": "Azure Architecture and Services",
+      "subtopic": "Compute Services",
+      "question": "What defines Azure Functions as a serverless compute service?",
+      "answer": "Azure Functions executes code in response to events or triggers without requiring infrastructure management, operating under a pay-per-execution cost model.",
+      "difficulty": "easy",
+      "tags": ["azure-functions", "serverless", "event-driven"]
+    },
+    {
+      "id": "az900-008",
+      "domain": "Azure Management and Governance",
+      "subtopic": "DevOps Services",
+      "question": "What are the core components included in Azure DevOps Services?",
+      "answer": "Azure Boards (work tracking), Azure Repos (Git repositories), Azure Pipelines (CI/CD), Azure Test Plans (testing management), Azure Artifacts (package hosting), and Azure DevOps Extensions.",
+      "difficulty": "medium",
+      "tags": ["devops", "cicd", "repos", "boards"]
+    },
+    {
+      "id": "az900-009",
+      "domain": "Azure Management and Governance",
+      "subtopic": "DevOps Services",
+      "question": "What function does Azure Pipelines serve?",
+      "answer": "Azure Pipelines provides automated Continuous Integration and Continuous Delivery (CI/CD) to build, test, and deploy code to any cloud or on-premises target.",
+      "difficulty": "easy",
+      "tags": ["pipelines", "cicd", "automation"]
+    },
+    {
+      "id": "az900-010",
+      "domain": "Azure Management and Governance",
+      "subtopic": "Identity & Access Management",
+      "question": "What is Microsoft Entra ID (formerly Azure Active Directory)?",
+      "answer": "Microsoft Entra ID is Azure's cloud-based identity and access management service providing authentication, authorization, Single Sign-On (SSO), and Multi-Factor Authentication (MFA).",
+      "difficulty": "easy",
+      "tags": ["entra-id", "azure-ad", "iam", "sso", "mfa"]
+    },
+    {
+      "id": "az900-011",
+      "domain": "Azure Management and Governance",
+      "subtopic": "Identity & Access Management",
+      "question": "What is the hierarchy of Role Assignment scopes in Azure from widest to narrowest?",
+      "answer": "Management Group -> Subscription -> Resource Group -> Resource.",
+      "difficulty": "medium",
+      "tags": ["rbac", "scopes", "governance"]
+    },
+    {
+      "id": "az900-012",
+      "domain": "Azure Management and Governance",
+      "subtopic": "Identity & Access Management",
+      "question": "What is Privileged Identity Management (PIM) used for?",
+      "answer": "PIM manages, controls, and monitors access to critical Azure resources by offering Just-In-Time (JIT) role activation, approval workflows, and access reviews.",
+      "difficulty": "hard",
+      "tags": ["pim", "security", "iam", "jit"]
+    },
+    {
+      "id": "az900-013",
+      "domain": "Azure Architecture and Services",
+      "subtopic": "Storage Services",
+      "question": "What are the primary storage access tiers supported by Azure Blob Storage?",
+      "answer": "Hot (frequently accessed data), Cool (infrequently accessed data stored for at least 30 days), Cold (infrequently accessed data stored for at least 90 days), and Archive (rarely accessed offline data stored for at least 180 days).",
+      "difficulty": "medium",
+      "tags": ["blob-storage", "access-tiers", "storage"]
+    },
+    {
+      "id": "az900-014",
+      "domain": "Azure Security Services",
+      "subtopic": "Security Tools",
+      "question": "What types of sensitive data are designed to be stored in Azure Key Vault?",
+      "answer": "API keys, passwords, certificates, and cryptographic encryption keys.",
+      "difficulty": "easy",
+      "tags": ["key-vault", "security", "secrets"]
+    },
+    {
+      "id": "az900-015",
+      "domain": "Azure Security Services",
+      "subtopic": "Security Tools",
+      "question": "What is Microsoft Sentinel and what capabilities does it provide?",
+      "answer": "Microsoft Sentinel is a cloud-native SIEM (Security Information and Event Management) and SOAR (Security Orchestration, Automation, and Response) solution for threat detection, investigation, and automated response.",
+      "difficulty": "hard",
+      "tags": ["sentinel", "siem", "soar", "security"]
+    },
+    {
+      "id": "az900-016",
+      "domain": "Azure Security Services",
+      "subtopic": "Governance",
+      "question": "What are the four key components of an Azure Policy?",
+      "answer": "Policy Definitions (what to enforce), Assignments (where to apply), Initiatives (groups of policies), and Remediation (auto-fixing non-compliant resources).",
+      "difficulty": "medium",
+      "tags": ["azure-policy", "governance", "compliance"]
+    },
+    {
+      "id": "az900-017",
+      "domain": "Azure Management and Governance",
+      "subtopic": "Monitoring Services",
+      "question": "What are the 5 recommendation categories provided by Azure Advisor?",
+      "answer": "Reliability, Security, Performance, Cost, and Operational Excellence.",
+      "difficulty": "medium",
+      "tags": ["advisor", "monitoring", "optimization"]
+    },
+    {
+      "id": "az900-018",
+      "domain": "Azure Management and Governance",
+      "subtopic": "Monitoring Services",
+      "question": "What is the purpose of the Azure Activity Log?",
+      "answer": "Azure Activity Log records control-plane subscription-level events, tracking write, delete, update, and permission management operations across Azure resources.",
+      "difficulty": "medium",
+      "tags": ["activity-log", "monitoring", "auditing"]
+    }
+  ]
+}
