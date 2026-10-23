@@ -50,29 +50,34 @@ export default function Dashboard({ stats, streak, onNavigate, onStudyCategory }
           Interactive 3D flashcards, AI real-world analogies, timed 1000-point mock exams, and spaced repetition scheduling designed to guarantee exam mastery.
         </p>
 
-        <div className="flex flex-wrap gap-3">
-          <button
-            onClick={() => onNavigate('flashcards')}
-            className="bg-white text-navy-950 font-bold px-6 py-3.5 rounded-2xl hover:bg-sky-50 transition-all duration-200 shadow-lg flex items-center gap-2 text-sm active:scale-95"
-          >
-            <Layers className="w-4 h-4 text-sky-600" />
-            Study Index Cards (3D) <ArrowRight className="w-4 h-4" />
-          </button>
-          <button
-            onClick={() => onNavigate('exam')}
-            className="bg-sky-500 hover:bg-sky-400 text-navy-950 font-bold px-6 py-3.5 rounded-2xl transition-all duration-200 shadow-md flex items-center gap-2 text-sm active:scale-95"
-          >
-            <Clock className="w-4 h-4" />
-            Take Mock Exam (Timed)
-          </button>
-          <button
-            onClick={openPrintableCramSheet}
-            className="bg-white/10 hover:bg-white/20 text-white font-semibold px-5 py-3.5 rounded-2xl transition-all duration-200 border border-white/20 flex items-center gap-2 text-sm"
-          >
-            <Printer className="w-4 h-4 text-sky-300" />
-            Print Cram Sheet
-          </button>
-        </div>
+       
+<div className="flex flex-wrap gap-3">
+  <button
+    onClick={() => onNavigate('flashcards')}
+    className="bg-white text-slate-900 font-bold px-6 py-3.5 rounded-2xl hover:bg-sky-50 transition-all duration-200 shadow-lg flex items-center gap-2 text-sm active:scale-95"
+  >
+    <Layers className="w-4 h-4 text-sky-600" />
+    Study Index Cards (3D)
+    <ArrowRight className="w-4 h-4" />
+  </button>
+
+  <button
+    onClick={() => onNavigate('exam')}
+    className="bg-sky-500 hover:bg-sky-400 text-navy-950 font-bold px-6 py-3.5 rounded-2xl transition-all duration-200 shadow-md flex items-center gap-2 text-sm active:scale-95"
+  >
+    <Clock className="w-4 h-4" />
+    Take Mock Exam (Timed)
+  </button>
+
+  <button
+    onClick={openPrintableCramSheet}
+    className="bg-white/10 hover:bg-white/20 text-white font-semibold px-5 py-3.5 rounded-2xl transition-all duration-200 border border-white/20 flex items-center gap-2 text-sm"
+  >
+    <Printer className="w-4 h-4 text-sky-300" />
+    Print Cram Sheet
+  </button>
+</div>
+
       </section>
 
       {/* Quick stats + Streak Widget */}
