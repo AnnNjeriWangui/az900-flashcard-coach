@@ -36,12 +36,31 @@
       );
   }
 
+  .dark .index-card-paper {
+    background-color: #1e293b;
+    background-image:
+      linear-gradient(to right, transparent 52px, rgba(244, 63, 94, 0.45) 52px, rgba(244, 63, 94, 0.45) 54px, transparent 54px),
+      repeating-linear-gradient(
+        transparent,
+        transparent 29px,
+        rgba(71, 85, 105, 0.5) 29px,
+        rgba(71, 85, 105, 0.5) 30px
+      );
+  }
+
   /* Dark mode or subtle paper grain */
   .paper-shadow {
     box-shadow:
       0 1px 2px rgba(0, 0, 0, 0.05),
       0 10px 25px -5px rgba(16, 42, 67, 0.12),
       0 20px 40px -15px rgba(16, 42, 67, 0.15);
+  }
+
+  .dark .paper-shadow {
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.4),
+      0 12px 30px -5px rgba(0, 0, 0, 0.5),
+      0 20px 45px -10px rgba(0, 0, 0, 0.7);
   }
 
   /* Physical punch hole effect */

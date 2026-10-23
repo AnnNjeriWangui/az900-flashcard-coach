@@ -80,10 +80,10 @@ export function Flashcard({
         {/* ========================================================= */}
         {/* FRONT FACE: QUESTION / TERM                               */}
         {/* ========================================================= */}
-        <div className="absolute inset-0 w-full h-full backface-hidden index-card-paper rounded-3xl paper-shadow border border-stone-200/80 p-6 sm:p-8 flex flex-col justify-between overflow-hidden">
+        <div className="absolute inset-0 w-full h-full backface-hidden index-card-paper rounded-3xl paper-shadow border border-stone-200/80 dark:border-navy-700 p-6 sm:p-8 flex flex-col justify-between overflow-hidden">
           {/* Top-left physical ring punch hole effect */}
           <div
-            className="absolute top-5 left-5 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-navy-900/90 ring-punch-hole border-2 border-stone-300/80 flex items-center justify-center pointer-events-none z-20"
+            className="absolute top-5 left-5 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-navy-900/90 dark:bg-navy-950 ring-punch-hole border-2 border-stone-300/80 dark:border-navy-700 flex items-center justify-center pointer-events-none z-20"
             title="Ring punch hole"
           >
             <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-navy-950 shadow-inner opacity-95" />
@@ -100,8 +100,8 @@ export function Flashcard({
                 <span className={`text-xs font-bold uppercase tracking-wider ${domainMeta.badgeText}`}>
                   {domain}
                 </span>
-                <span className="text-stone-300 text-xs">•</span>
-                <span className="text-xs font-medium text-navy-800 truncate max-w-[150px] sm:max-w-xs">
+                <span className="text-stone-400 dark:text-stone-500 text-xs">•</span>
+                <span className="text-xs font-medium text-navy-800 dark:text-navy-950 truncate max-w-[150px] sm:max-w-xs">
                   {card.subtopic}
                 </span>
               </div>
@@ -115,7 +115,7 @@ export function Flashcard({
                 >
                   {card.difficulty}
                 </span>
-                <span className="text-xs font-mono text-stone-600 bg-stone-100/90 px-2 py-0.5 rounded border border-stone-200">
+                <span className="text-xs font-mono text-stone-600 dark:text-stone-300 bg-stone-100/90 dark:bg-navy-800/90 px-2 py-0.5 rounded border border-stone-200 dark:border-navy-700">
                   #{card.id.replace('az900-', '')}
                 </span>
               </div>
@@ -123,10 +123,10 @@ export function Flashcard({
 
             {/* Handwritten Section Label */}
             <div className="mt-5 flex items-center justify-between">
-              <span className="font-handwriting text-sm text-sky-700 font-semibold tracking-wide flex items-center gap-1.5">
+              <span className="font-handwriting text-sm text-sky-700 dark:text-sky-300 font-semibold tracking-wide flex items-center gap-1.5">
                 <HelpCircle className="w-3.5 h-3.5" /> Question / Azure Concept
               </span>
-              <span className="text-[11px] font-handwriting text-stone-600">
+              <span className="text-[11px] font-handwriting text-stone-600 dark:text-stone-400">
                 Card {cardIndex + 1} of {totalCards}
               </span>
             </div>
@@ -134,20 +134,20 @@ export function Flashcard({
 
           {/* Main Question Body with Script / Handwritten Style Font */}
           <div className="relative my-auto py-4 pl-10 sm:pl-12">
-            <h2 className="font-script text-2xl sm:text-3xl lg:text-4xl font-bold text-navy-900 leading-snug tracking-wide">
+            <h2 className="font-script text-2xl sm:text-3xl lg:text-4xl font-bold text-navy-900 dark:text-navy-50 leading-snug tracking-wide">
               {card.question}
             </h2>
           </div>
 
           {/* Card Footer: Tags & Flip Hint */}
-          <div className="relative pl-10 sm:pl-12 pt-3 border-t border-stone-200/50 flex flex-wrap items-center justify-between gap-3">
+          <div className="relative pl-10 sm:pl-12 pt-3 border-t border-stone-200/50 dark:border-navy-700/60 flex flex-wrap items-center justify-between gap-3">
             {/* Tags */}
             <div className="flex flex-wrap gap-1.5 items-center">
-              <Tag className="w-3 h-3 text-stone-600" />
+              <Tag className="w-3 h-3 text-stone-500 dark:text-stone-400" />
               {card.tags.slice(0, 3).map((tag) => (
                 <span
                   key={tag}
-                  className="text-[11px] font-medium bg-stone-100/90 text-stone-800 px-2 py-0.5 rounded-md border border-stone-200/60"
+                  className="text-[11px] font-medium bg-stone-100/90 dark:bg-navy-800 text-stone-800 dark:text-stone-200 px-2 py-0.5 rounded-md border border-stone-200/60 dark:border-navy-700"
                 >
                   #{tag}
                 </span>
@@ -155,7 +155,7 @@ export function Flashcard({
             </div>
 
             {/* Flip prompt */}
-            <div className="flex items-center gap-1.5 text-xs font-semibold text-sky-600 group-hover:text-sky-700 group-hover:translate-x-0.5 transition-all">
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-sky-600 dark:text-sky-400 group-hover:text-sky-700 dark:group-hover:text-sky-300 group-hover:translate-x-0.5 transition-all">
               <span>Click to reveal answer</span>
               <RotateCw className="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180" />
             </div>
@@ -165,10 +165,10 @@ export function Flashcard({
         {/* ========================================================= */}
         {/* BACK FACE: ANSWER / KEY DETAILS                           */}
         {/* ========================================================= */}
-        <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 index-card-paper rounded-3xl paper-shadow border border-stone-200/80 p-6 sm:p-8 flex flex-col justify-between overflow-hidden">
+        <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 index-card-paper rounded-3xl paper-shadow border border-stone-200/80 dark:border-navy-700 p-6 sm:p-8 flex flex-col justify-between overflow-hidden">
           {/* Top-left physical ring punch hole effect (matches back) */}
           <div
-            className="absolute top-5 left-5 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-navy-900/90 ring-punch-hole border-2 border-stone-300/80 flex items-center justify-center pointer-events-none z-20"
+            className="absolute top-5 left-5 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-navy-900/90 dark:bg-navy-950 ring-punch-hole border-2 border-stone-300/80 dark:border-navy-700 flex items-center justify-center pointer-events-none z-20"
             title="Ring punch hole"
           >
             <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-navy-950 shadow-inner opacity-95" />
@@ -185,8 +185,8 @@ export function Flashcard({
                 <span className={`text-xs font-bold uppercase tracking-wider ${domainMeta.badgeText}`}>
                   {domain}
                 </span>
-                <span className="text-stone-300 text-xs">•</span>
-                <span className="text-xs font-semibold text-emerald-800 flex items-center gap-1">
+                <span className="text-stone-400 dark:text-stone-500 text-xs">•</span>
+                <span className="text-xs font-semibold text-emerald-800 dark:text-emerald-950 flex items-center gap-1">
                   <Check className="w-3.5 h-3.5" /> Answer Key
                 </span>
               </div>
@@ -196,8 +196,8 @@ export function Flashcard({
                 <span
                   className={`text-xs font-semibold px-2.5 py-0.5 rounded-full border ${
                     status === 'got-it'
-                      ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
-                      : 'bg-amber-100 text-amber-800 border-amber-300'
+                      ? 'bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border-emerald-300 dark:border-emerald-700'
+                      : 'bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border-amber-300 dark:border-amber-700'
                   }`}
                 >
                   {status === 'got-it' ? '✓ Mastered' : '⚠ Practice'}
@@ -207,10 +207,10 @@ export function Flashcard({
 
             {/* Handwritten Label */}
             <div className="mt-3 flex items-center justify-between">
-              <span className="font-handwriting text-sm text-emerald-700 font-bold tracking-wide flex items-center gap-1.5">
+              <span className="font-handwriting text-sm text-emerald-700 dark:text-emerald-300 font-bold tracking-wide flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5" /> Core Takeaways & Details
               </span>
-              <span className="text-[11px] font-handwriting text-stone-600">
+              <span className="text-[11px] font-handwriting text-stone-600 dark:text-stone-400">
                 Question #{card.id.replace('az900-', '')}
               </span>
             </div>
@@ -219,15 +219,15 @@ export function Flashcard({
           {/* Answer Body with Checkmark (✓) Bullets */}
           <div className="relative my-auto pl-10 sm:pl-12 py-2 overflow-y-auto max-h-[260px] pr-1">
             {/* Highlighted Primary Answer */}
-            <div className="p-3.5 rounded-xl bg-white/80 border border-stone-200/90 shadow-xs mb-3">
-              <p className="text-navy-900 font-semibold text-base sm:text-lg leading-relaxed">
+            <div className="p-3.5 rounded-xl bg-white/80 dark:bg-navy-900/80 border border-stone-200/90 dark:border-navy-700 shadow-xs mb-3">
+              <p className="text-navy-900 dark:text-navy-50 font-semibold text-base sm:text-lg leading-relaxed">
                 {card.answer}
               </p>
             </div>
 
             {/* Checkmark (✓) Bulleted Points */}
             <div className="space-y-2 mt-2">
-              <p className="text-[11px] font-bold uppercase tracking-wider text-stone-600 font-sans">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-stone-600 dark:text-stone-400 font-sans">
                 Key Exam Points:
               </p>
               {answerBullets.map((bullet, idx) => (
@@ -238,7 +238,7 @@ export function Flashcard({
                   >
                     ✓
                   </span>
-                  <p className="text-sm sm:text-base text-navy-800 leading-normal font-medium">
+                  <p className="text-sm sm:text-base text-navy-800 dark:text-navy-100 leading-normal font-medium">
                     {bullet}
                   </p>
                 </div>
@@ -459,7 +459,7 @@ export default function FlashcardDeck({
               {rawCards.length} Cards Total
             </span>
           </div>
-          <p className="text-navy-500 text-sm mt-1">
+          <p className="text-navy-500 dark:text-navy-300 text-sm mt-1">
             Realistic physical index cards with 3D flip, handwritten styles, and domain highlights.
           </p>
         </div>
@@ -474,7 +474,7 @@ export default function FlashcardDeck({
             className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold border transition-all duration-200 ${
               isShuffling
                 ? 'bg-sky-100 text-sky-800 border-sky-300 scale-95'
-                : 'bg-white text-navy-700 border-navy-200 hover:bg-sky-50 hover:text-sky-700 hover:border-sky-300 shadow-xs'
+                : 'bg-white dark:bg-navy-800 text-navy-700 dark:text-navy-200 border-navy-200 dark:border-navy-700 hover:bg-sky-50 dark:hover:bg-navy-700 hover:text-sky-700 shadow-xs'
             }`}
           >
             <Shuffle className={`w-3.5 h-3.5 ${isShuffling ? 'animate-spin' : ''}`} />
@@ -485,7 +485,7 @@ export default function FlashcardDeck({
             type="button"
             onClick={resetOriginalOrder}
             title="Reset to original order"
-            className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-white text-navy-600 border border-navy-200 hover:bg-navy-50 shadow-xs transition-colors"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-white dark:bg-navy-800 text-navy-600 dark:text-navy-200 border border-navy-200 dark:border-navy-700 hover:bg-navy-50 dark:hover:bg-navy-700 shadow-xs transition-colors"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">Reset Order</span>
@@ -500,8 +500,8 @@ export default function FlashcardDeck({
           onClick={() => setSelectedDomain('All')}
           className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 border ${
             selectedDomain === 'All'
-              ? 'bg-navy-800 text-white border-navy-800 shadow-sm'
-              : 'bg-white text-navy-600 border-navy-200 hover:bg-navy-50'
+              ? 'bg-navy-800 dark:bg-sky-600 text-white border-navy-800 dark:border-sky-600 shadow-sm'
+              : 'bg-white dark:bg-navy-800 text-navy-600 dark:text-navy-200 border-navy-200 dark:border-navy-700 hover:bg-navy-50 dark:hover:bg-navy-700'
           }`}
         >
           <Layers className="w-3.5 h-3.5" />
@@ -522,14 +522,14 @@ export default function FlashcardDeck({
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 border ${
                 isActive
                   ? `${meta.badgeBg} ${meta.badgeText} ${meta.borderClass} shadow-sm font-bold scale-[1.02]`
-                  : 'bg-white text-navy-700 border-navy-200/80 hover:bg-navy-50'
+                  : 'bg-white dark:bg-navy-800 text-navy-700 dark:text-navy-200 border-navy-200/80 dark:border-navy-700 hover:bg-navy-50 dark:hover:bg-navy-700'
               }`}
             >
               <Icon className="w-3.5 h-3.5" />
               <span>{d}</span>
               <span
                 className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                  isActive ? 'bg-white/80' : 'bg-navy-100 text-navy-600'
+                  isActive ? 'bg-white/80 dark:bg-navy-900/60' : 'bg-navy-100 dark:bg-navy-700 text-navy-600 dark:text-navy-300'
                 }`}
               >
                 {count}
@@ -540,28 +540,28 @@ export default function FlashcardDeck({
       </div>
 
       {/* Top Progress Bar & Counter (Card X of 18) */}
-      <div className="bg-white rounded-2xl p-4 sm:p-5 shadow-xs border border-navy-100 space-y-2.5">
+      <div className="bg-white dark:bg-navy-800 rounded-2xl p-4 sm:p-5 shadow-xs border border-navy-100 dark:border-navy-700 space-y-2.5">
         <div className="flex items-center justify-between text-xs sm:text-sm">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-navy-800 text-sm sm:text-base">
+            <span className="font-bold text-navy-800 dark:text-navy-100 text-sm sm:text-base">
               Card {currentIndex + 1} of {totalInDeck}
             </span>
-            <span className="text-navy-400 font-mono text-xs">({progressPercent}%)</span>
+            <span className="text-navy-400 dark:text-navy-500 font-mono text-xs">({progressPercent}%)</span>
           </div>
 
           <div className="flex items-center gap-3 text-xs">
-            <span className="text-emerald-700 font-semibold flex items-center gap-1">
+            <span className="text-emerald-700 dark:text-emerald-400 font-semibold flex items-center gap-1">
               <CheckCircle2 className="w-3.5 h-3.5" /> {masteredCount} Mastered
             </span>
-            <span className="text-navy-400 hidden sm:inline">•</span>
-            <span className="text-stone-500 hidden sm:inline">
-              Shortcuts: <kbd className="px-1 py-0.5 bg-stone-100 rounded text-[10px]">Space</kbd> Flip, <kbd className="px-1 py-0.5 bg-stone-100 rounded text-[10px]">←</kbd> <kbd className="px-1 py-0.5 bg-stone-100 rounded text-[10px]">→</kbd> Nav
+            <span className="text-navy-400 dark:text-navy-600 hidden sm:inline">•</span>
+            <span className="text-stone-500 dark:text-stone-400 hidden sm:inline">
+              Shortcuts: <kbd className="px-1 py-0.5 bg-stone-100 dark:bg-navy-700 rounded text-[10px]">Space</kbd> Flip, <kbd className="px-1 py-0.5 bg-stone-100 dark:bg-navy-700 rounded text-[10px]">←</kbd> <kbd className="px-1 py-0.5 bg-stone-100 dark:bg-navy-700 rounded text-[10px]">→</kbd> Nav
             </span>
           </div>
         </div>
 
         {/* Progress Bar Track */}
-        <div className="w-full h-2 bg-navy-50 rounded-full overflow-hidden">
+        <div className="w-full h-2 bg-navy-50 dark:bg-navy-900 rounded-full overflow-hidden">
           <div
             className="h-full bg-gradient-to-r from-sky-500 via-indigo-500 to-emerald-500 rounded-full transition-all duration-300"
             style={{ width: `${progressPercent}%` }}
@@ -594,10 +594,10 @@ export default function FlashcardDeck({
         <button
           type="button"
           onClick={goPrev}
-          className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-white text-navy-700 font-semibold border border-navy-200 hover:bg-navy-50 hover:border-navy-300 shadow-xs transition-all active:scale-95"
+          className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-white dark:bg-navy-800 text-navy-700 dark:text-navy-100 font-semibold border border-navy-200 dark:border-navy-700 hover:bg-navy-50 dark:hover:bg-navy-700 shadow-xs transition-all active:scale-95"
           title="Previous Card (Hotkey: ←)"
         >
-          <ChevronLeft className="w-5 h-5 text-navy-500" />
+          <ChevronLeft className="w-5 h-5 text-navy-500 dark:text-navy-400" />
           <span>Previous Card</span>
         </button>
 
@@ -608,7 +608,7 @@ export default function FlashcardDeck({
           className={`w-full sm:w-auto flex items-center justify-center gap-2 px-7 py-3 rounded-2xl font-bold shadow-md transition-all active:scale-95 ${
             isFlipped
               ? 'bg-emerald-600 text-white hover:bg-emerald-700'
-              : 'bg-navy-900 text-white hover:bg-navy-800'
+              : 'bg-navy-900 dark:bg-sky-600 text-white hover:bg-navy-800 dark:hover:bg-sky-500'
           }`}
           title="Flip Card (Hotkey: Space or Enter)"
         >
@@ -620,11 +620,11 @@ export default function FlashcardDeck({
         <button
           type="button"
           onClick={goNext}
-          className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-white text-navy-700 font-semibold border border-navy-200 hover:bg-navy-50 hover:border-navy-300 shadow-xs transition-all active:scale-95"
+          className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-white dark:bg-navy-800 text-navy-700 dark:text-navy-100 font-semibold border border-navy-200 dark:border-navy-700 hover:bg-navy-50 dark:hover:bg-navy-700 shadow-xs transition-all active:scale-95"
           title="Next Card (Hotkey: →)"
         >
           <span>Next Card</span>
-          <ChevronRight className="w-5 h-5 text-navy-500" />
+          <ChevronRight className="w-5 h-5 text-navy-500 dark:text-navy-400" />
         </button>
       </div>
     </div>
