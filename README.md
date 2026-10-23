@@ -1,6 +1,8 @@
-# AZ-900 Flashcard Coach
+# AZ-900 Flashcard Coach 🚀
 
-An interactive, AI-assisted flashcard application and study suite built to help learners master the **Microsoft Azure Fundamentals (AZ-900)** certification exam.
+> An interactive, aesthetic 3D index-card flashcard coach for mastering Microsoft Azure Fundamentals (AZ-900).
+
+🌐 **Live Demo:** [AZ-900 Flashcard Coach Prototype](https://ais-pre-27uojkzeegya2poxd73aan-510544424534.europe-west1.run.app/)
 
 ---
 
