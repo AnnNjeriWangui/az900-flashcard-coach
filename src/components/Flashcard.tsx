@@ -25,6 +25,7 @@ import {
   resolveExamDomain,
   formatAnswerBullets,
 } from '@/types/flashcard';
+import AIAnalogySection from '@/components/AIAnalogySection';
 
 export interface FlashcardProps {
   card: FlashcardData;
@@ -244,6 +245,18 @@ export function Flashcard({
                 </div>
               ))}
             </div>
+
+            {/* AI Real-World Analogy Translator Section */}
+            <div
+              className="mt-4 pt-3 border-t border-stone-200/60"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <AIAnalogySection
+                title={card.question}
+                definition={card.answer}
+                compact
+              />
+            </div>
           </div>
 
           {/* Card Footer: Mastery feedback actions & Flip back prompt */}
@@ -296,6 +309,7 @@ export interface FlashcardDeckProps {
   onStudyComplete?: () => void;
   externalStatusMap?: Record<string, 'got-it' | 'need-practice' | 'new' | string>;
   onSetStatus?: (cardId: string, status: 'got-it' | 'need-practice') => void;
+  onRecordStudy?: () => void;
 }
 
 /**
@@ -305,6 +319,7 @@ export interface FlashcardDeckProps {
 export default function FlashcardDeck({
   externalStatusMap,
   onSetStatus,
+  onRecordStudy,
 }: FlashcardDeckProps) {
   // Load raw cards from data/az900-flashcards.json
   const rawCards = useMemo(() => {
@@ -360,7 +375,8 @@ export default function FlashcardDeck({
 
   const toggleFlip = useCallback(() => {
     setIsFlipped((prev) => !prev);
-  }, []);
+    onRecordStudy?.();
+  }, [onRecordStudy]);
 
   // Randomize / Shuffle implementation (Fisher-Yates)
   const shuffleDeck = useCallback(() => {
@@ -392,6 +408,7 @@ export default function FlashcardDeck({
   const handleMarkStatus = useCallback(
     (status: 'got-it' | 'need-practice') => {
       if (!currentCard) return;
+      onRecordStudy?.();
       if (onSetStatus) {
         onSetStatus(currentCard.id, status);
       } else {
@@ -402,7 +419,7 @@ export default function FlashcardDeck({
         setCurrentIndex((prev) => prev + 1);
       }
     },
-    [currentCard, currentIndex, filteredDeck.length, onSetStatus]
+    [currentCard, currentIndex, filteredDeck.length, onSetStatus, onRecordStudy]
   );
 
   // Global Keyboard Shortcuts

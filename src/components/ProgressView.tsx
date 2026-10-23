@@ -1,14 +1,16 @@
-import { CheckCircle2, AlertCircle, BookOpen, Award, RotateCcw } from 'lucide-react';
+import { CheckCircle2, AlertCircle, BookOpen, Award, RotateCcw, Flame, Calendar } from 'lucide-react';
 import { flashcards, categories } from '@/data/flashcards';
 import type { ProgressStats, ProgressMap } from '@/hooks/useProgress';
+import type { StreakData } from '@/utils/streakTracker';
 
 interface ProgressViewProps {
   stats: ProgressStats;
   progress: ProgressMap;
+  streak: StreakData;
   onReset: () => void;
 }
 
-export default function ProgressView({ stats, progress, onReset }: ProgressViewProps) {
+export default function ProgressView({ stats, progress, streak, onReset }: ProgressViewProps) {
   const percent = stats.total > 0 ? Math.round((stats.studied / stats.total) * 100) : 0;
   const masteryPercent = stats.total > 0 ? Math.round((stats.mastered / stats.total) * 100) : 0;
 
@@ -50,6 +52,48 @@ export default function ProgressView({ stats, progress, onReset }: ProgressViewP
           value={stats.needPractice}
           color="amber"
         />
+      </div>
+
+      {/* Daily Study Streak Tracker Card */}
+      <div className="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 rounded-2xl p-6 text-white shadow-md">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-2xl">🔥</span>
+              <h2 className="text-xl font-bold">Daily Study Streak Tracker</h2>
+            </div>
+            <p className="text-amber-100 text-sm max-w-xl">
+              Studying every day triggers retention memory. Study consecutive days to build up your streak badge!
+            </p>
+          </div>
+          <div className="flex items-center gap-4 bg-white/20 backdrop-blur-md px-5 py-3 rounded-xl border border-white/30 self-start sm:self-auto">
+            <div>
+              <div className="text-3xl font-black">{streak.currentStreak} Days</div>
+              <div className="text-xs font-semibold text-amber-100 uppercase tracking-wider">
+                Current Streak
+              </div>
+            </div>
+            <div className="h-8 w-px bg-white/30" />
+            <div>
+              <div className="text-lg font-bold">{streak.history.length}</div>
+              <div className="text-xs text-amber-100">Total Days</div>
+            </div>
+          </div>
+        </div>
+
+        {streak.history.length > 0 && (
+          <div className="mt-4 pt-4 border-t border-white/20 flex flex-wrap items-center gap-2 text-xs">
+            <span className="font-semibold text-amber-100">Study History Dates:</span>
+            {streak.history.slice(-8).map((date) => (
+              <span
+                key={date}
+                className="bg-white/25 px-2.5 py-1 rounded-md font-mono text-[11px] font-semibold"
+              >
+                {date}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Overall progress bar */}

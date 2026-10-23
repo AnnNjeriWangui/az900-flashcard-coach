@@ -2,13 +2,15 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import { Eye, CheckCircle2, AlertCircle, ChevronRight, ChevronLeft, RotateCcw, PartyPopper } from 'lucide-react';
 import { flashcards, getCategory } from '@/data/flashcards';
 import type { ProgressMap } from '@/hooks/useProgress';
+import AIAnalogySection from '@/components/AIAnalogySection';
 
 interface RevisionProps {
   progress: ProgressMap;
   setStatus: (cardId: string, status: 'got-it' | 'need-practice') => void;
+  onRecordStudy?: () => void;
 }
 
-export default function RevisionMode({ progress, setStatus }: RevisionProps) {
+export default function RevisionMode({ progress, setStatus, onRecordStudy }: RevisionProps) {
   const [revealed, setRevealed] = useState(false);
 
   // Prioritize "need-practice" cards, then unreviewed, then mastered.
@@ -64,6 +66,7 @@ export default function RevisionMode({ progress, setStatus }: RevisionProps) {
   const handleMark = useCallback(
     (status: 'got-it' | 'need-practice') => {
       if (!currentCardId) return;
+      onRecordStudy?.();
       setStatus(currentCardId, status);
       // Advance to the next card if one exists; the deck will re-order after the
       // progress change, and the useEffect above will reposition us if needed.
@@ -71,7 +74,7 @@ export default function RevisionMode({ progress, setStatus }: RevisionProps) {
         setCurrentCardId(revisionDeck[currentIndex + 1].id);
       }
     },
-    [currentCardId, currentIndex, revisionDeck, setStatus],
+    [currentCardId, currentIndex, revisionDeck, setStatus, onRecordStudy],
   );
 
   // Empty state: no cards at all
@@ -177,6 +180,10 @@ export default function RevisionMode({ progress, setStatus }: RevisionProps) {
                 </p>
                 <p className="text-navy-700 leading-relaxed">{card.explanation}</p>
               </div>
+
+              {/* AI Real-World Analogy Translator */}
+              <AIAnalogySection title={card.question} definition={card.answer} />
+
               <div className="grid grid-cols-2 gap-3">
                 <button
                   onClick={() => handleMark('need-practice')}

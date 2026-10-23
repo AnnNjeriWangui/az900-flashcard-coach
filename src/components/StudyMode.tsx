@@ -3,14 +3,16 @@ import { Eye, CheckCircle2, AlertCircle, ChevronRight, ChevronLeft, BookOpen, Ro
 import { flashcards, categories, getCategory } from '@/data/flashcards';
 import type { CategoryId } from '@/data/flashcards';
 import type { ProgressMap } from '@/hooks/useProgress';
+import AIAnalogySection from '@/components/AIAnalogySection';
 
 interface StudyProps {
   progress: ProgressMap;
   setStatus: (cardId: string, status: 'got-it' | 'need-practice') => void;
   initialCategory?: CategoryId | 'all';
+  onRecordStudy?: () => void;
 }
 
-export default function StudyMode({ progress, setStatus, initialCategory = 'all' }: StudyProps) {
+export default function StudyMode({ progress, setStatus, initialCategory = 'all', onRecordStudy }: StudyProps) {
   const [selectedCategory, setSelectedCategory] = useState<CategoryId | 'all'>(initialCategory);
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -50,6 +52,7 @@ export default function StudyMode({ progress, setStatus, initialCategory = 'all'
   const isLast = index === deck.length - 1;
 
   function handleMark(status: 'got-it' | 'need-practice') {
+    onRecordStudy?.();
     setStatus(card.id, status);
     if (index < deck.length - 1) {
       setIndex(index + 1);
@@ -144,6 +147,10 @@ export default function StudyMode({ progress, setStatus, initialCategory = 'all'
                 </p>
                 <p className="text-navy-700 leading-relaxed">{card.explanation}</p>
               </div>
+
+              {/* AI Real-World Analogy Translator */}
+              <AIAnalogySection title={card.question} definition={card.answer} />
+
               <div className="grid grid-cols-2 gap-3">
                 <button
                   onClick={() => handleMark('need-practice')}

@@ -1,11 +1,13 @@
-import { Cloud, Server, ShieldCheck, ArrowRight, Info, Layers } from 'lucide-react';
+import { Cloud, Server, ShieldCheck, ArrowRight, Info, Layers, Flame } from 'lucide-react';
 import { categories, flashcards } from '@/data/flashcards';
 import type { CategoryId } from '@/data/flashcards';
 import type { ProgressStats } from '@/hooks/useProgress';
 import type { View } from '@/components/Navigation';
+import type { StreakData } from '@/utils/streakTracker';
 
 interface DashboardProps {
   stats: ProgressStats;
+  streak: StreakData;
   onNavigate: (v: View) => void;
   onStudyCategory: (category: CategoryId) => void;
 }
@@ -16,7 +18,7 @@ const iconMap: Record<string, typeof Cloud> = {
   ShieldCheck,
 };
 
-export default function Dashboard({ stats, onNavigate, onStudyCategory }: DashboardProps) {
+export default function Dashboard({ stats, streak, onNavigate, onStudyCategory }: DashboardProps) {
   const percent = stats.total > 0 ? Math.round((stats.studied / stats.total) * 100) : 0;
 
   return (
@@ -30,8 +32,8 @@ export default function Dashboard({ stats, onNavigate, onStudyCategory }: Dashbo
           Welcome to your learning journey
         </h1>
         <p className="text-sky-100 text-base sm:text-lg max-w-2xl mb-6">
-          Master the Microsoft Azure Fundamentals exam through interactive flashcards.
-          Study at your own pace, track your progress, and focus on what needs work.
+          Master the Microsoft Azure Fundamentals exam through interactive flashcards and AI real-world analogies.
+          Study at your own pace, maintain your daily streak, and conquer the AZ-900 syllabus.
         </p>
         <div className="flex flex-wrap gap-3">
           <button
@@ -56,12 +58,27 @@ export default function Dashboard({ stats, onNavigate, onStudyCategory }: Dashbo
         </div>
       </section>
 
-      {/* Quick stats */}
-      <section className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* Quick stats + Streak Widget */}
+      <section className="grid grid-cols-2 lg:grid-cols-5 gap-4">
         <StatCard label="Total Cards" value={stats.total} accent="navy" />
         <StatCard label="Studied" value={stats.studied} accent="sky" />
         <StatCard label="Mastered" value={stats.mastered} accent="emerald" />
         <StatCard label="Need Practice" value={stats.needPractice} accent="amber" />
+        
+        {/* Daily Streak Card */}
+        <div className="col-span-2 sm:col-span-1 rounded-2xl p-5 bg-gradient-to-br from-amber-50 to-orange-100 border border-amber-200 shadow-xs flex flex-col justify-between">
+          <div className="flex items-center justify-between">
+            <span className="text-3xl font-extrabold text-amber-900 flex items-center gap-1">
+              {streak.currentStreak} <span className="text-2xl">🔥</span>
+            </span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 bg-amber-200/80 px-2 py-0.5 rounded-full border border-amber-300">
+              Streak
+            </span>
+          </div>
+          <p className="text-xs font-semibold text-amber-900 mt-2">
+            {streak.lastStudiedDate ? `Last: ${streak.lastStudiedDate}` : 'Study today to start!'}
+          </p>
+        </div>
       </section>
 
       {/* Progress bar */}

@@ -77,4 +77,62 @@
     background: linear-gradient(104deg, rgba(255, 237, 213, 0.95) 0%, rgba(254, 215, 170, 0.88) 100%);
     box-shadow: 0 1px 3px rgba(249, 115, 22, 0.15);
   }
+
+  /* Daily Study Streak Tracker Badge */
+  .streak-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff3cd;
+    color: #856404;
+    font-weight: bold;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid #ffeeba;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .streak-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  /* AI Real-World Analogy Translator Button */
+  .ai-btn {
+    background: linear-gradient(135deg, #0078d4, #0284c7);
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 120, 212, 0.25);
+  }
+
+  .ai-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 120, 212, 0.35);
+  }
+
+  .ai-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* AI Explanation Box */
+  .ai-box {
+    margin-top: 12px;
+    padding: 14px 16px;
+    background-color: #f8fafc;
+    border-left: 4px solid #0078d4;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    text-align: left;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
 }
+
