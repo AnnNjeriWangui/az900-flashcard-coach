@@ -12,6 +12,7 @@ import {
   HelpCircle,
   CheckCircle2,
   AlertCircle,
+  Volume2,
 } from 'lucide-react';
 
 // 1. Data Source: Import flashcards directly from data/az900-flashcards.json
@@ -26,6 +27,8 @@ import {
   formatAnswerBullets,
 } from '@/types/flashcard';
 import AIAnalogySection from '@/components/AIAnalogySection';
+import { speakText } from '@/utils/voiceReader';
+import { updateCardBox } from '@/utils/spacedRepetition';
 
 export interface FlashcardProps {
   card: FlashcardData;
@@ -127,9 +130,22 @@ export function Flashcard({
               <span className="font-handwriting text-sm text-sky-700 font-semibold tracking-wide flex items-center gap-1.5">
                 <HelpCircle className="w-3.5 h-3.5" /> Question / Azure Concept
               </span>
-              <span className="text-[11px] font-handwriting text-stone-600">
-                Card {cardIndex + 1} of {totalCards}
-              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    speakText(card.question);
+                  }}
+                  className="p-1 rounded-md text-stone-400 hover:text-sky-600 hover:bg-stone-100 transition-colors"
+                  title="Listen to question (Audio voice reader)"
+                >
+                  <Volume2 className="w-3.5 h-3.5" />
+                </button>
+                <span className="text-[11px] font-handwriting text-stone-600">
+                  Card {cardIndex + 1} of {totalCards}
+                </span>
+              </div>
             </div>
           </div>
 
@@ -211,9 +227,22 @@ export function Flashcard({
               <span className="font-handwriting text-sm text-emerald-700 font-bold tracking-wide flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5" /> Core Takeaways & Details
               </span>
-              <span className="text-[11px] font-handwriting text-stone-600">
-                Question #{card.id.replace('az900-', '')}
-              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    speakText(card.answer);
+                  }}
+                  className="p-1 rounded-md text-stone-400 hover:text-emerald-700 hover:bg-stone-100 transition-colors"
+                  title="Listen to answer (Audio voice reader)"
+                >
+                  <Volume2 className="w-3.5 h-3.5" />
+                </button>
+                <span className="text-[11px] font-handwriting text-stone-600">
+                  Question #{card.id.replace('az900-', '')}
+                </span>
+              </div>
             </div>
           </div>
 
@@ -409,6 +438,7 @@ export default function FlashcardDeck({
     (status: 'got-it' | 'need-practice') => {
       if (!currentCard) return;
       onRecordStudy?.();
+      updateCardBox(currentCard.id, status === 'got-it' ? 'easy' : 'hard');
       if (onSetStatus) {
         onSetStatus(currentCard.id, status);
       } else {

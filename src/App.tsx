@@ -5,6 +5,10 @@ import StudyMode from '@/components/StudyMode';
 import RevisionMode from '@/components/RevisionMode';
 import ProgressView from '@/components/ProgressView';
 import FlashcardDeck from '@/components/Flashcard';
+import MockExamView from '@/components/MockExamView';
+import SpacedRepetitionView from '@/components/SpacedRepetitionView';
+import ScenarioMatcherView from '@/components/ScenarioMatcherView';
+import SlaCalculatorView from '@/components/SlaCalculatorView';
 import { flashcards } from '@/data/flashcards';
 import type { CategoryId } from '@/data/flashcards';
 import { useProgress } from '@/hooks/useProgress';
@@ -75,6 +79,16 @@ function App() {
             onRecordStudy={recordSession}
           />
         )}
+        {view === 'exam' && (
+          <MockExamView onCompleteStudySession={recordSession} />
+        )}
+        {view === 'leitner' && (
+          <SpacedRepetitionView onRecordStudy={recordSession} />
+        )}
+        {view === 'scenarios' && (
+          <ScenarioMatcherView onRecordStudy={recordSession} />
+        )}
+        {view === 'sla' && <SlaCalculatorView />}
         {view === 'progress' && (
           <ProgressView
             stats={stats}
